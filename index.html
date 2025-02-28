@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ArticuBot</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+
+
+                        <h1 class="title is-1 publication-title">
+                         ArticuBot: Learning Universal Articulated Object Manipulation Policy via Large Scale Simulation
+                        </h1>
+                        <!-- <h3 class="title is-4 conference-authors"><a target="_blank" href="https://icml.cc/">ICML 2023</a>
+                    </h3> -->
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a target="_blank" href="https://yufeiwang63.github.io/">
+                                    Yufei Wang</a><sup>*,1</sup>,
+
+                                <a target="_blank" href="https://articubot.github.io"> Ziyu Wang</a><sup>*2</sup>,
+
+                                <a target="_blank" href="https://articubot.github.io"> Mino Nakura</a><sup>&dagger;1</sup>,
+                                <a target="_blank"
+                                    href="https://articubot.github.io">Pratik Bhowal</a><sup>&dagger;1</sup>,
+                                <a target="_blank"
+                                    href="https://articubot.github.io">Chia-Liang Kuo</a><sup>&dagger;3</sup>,
+                                <br>
+                                <a target="_blank"
+                                    href="https://articubot.github.io">Yi-Ting Chen</a><sup>3</sup>,
+                                <a target="_blank"
+                                    href="https://zackory.com/">Zackory Erickson</a><sup>&Dagger;1</sup>,
+                                <a target="_blank"
+                                    href="http://davheld.github.io/">David Held</a><sup>&Dagger;1</sup>,
+
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>Robotics Institute, Carnegie Mellon University</span>
+                            <span class="author-block"><sup>2</sup>IIIS, Tsinghua University </span>
+                            <span class="author-block"><sup>3</sup>Department of Computer Science, National Yang Ming Chiao Tung University</span>
+                        </div>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>&dagger;*</sup>Equal Contribution, <sup>&Dagger;</sup>Equal Advising </span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- TODO REPLACE ALL LINKS -->
+                                <span class="link-block">
+                                    <a target="_blank" href="https://arxiv.org/abs/2311.01455"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a target="_blank" href="https://github.com/Genesis-Embodied-AI/RoboGen"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding: 0">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <video poster="" id="" autoplay controls loop width="100%" playbackRate=2.0 style="border-radius: 5px;">
+                    <source src="assets/website-demo-no-voice.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p style="font-size: 125%">
+                          This paper presents ArticuBot, in which a single learned policy enables a robotics system to open diverse categories of unseen articulated objects in the real world.  This task has long been challenging for robotics due to the large variations in the geometry, size, and articulation types of such objects. 
+                          Our system, ArticuBot, consists of three parts: generating a large number of demonstrations in physics-based simulation, distilling all generated demonstrations into a point cloud-based neural policy via imitation learning, and performing zero-shot sim2real transfer to real robotics systems.
+                          Utilizing sampling-based grasping and motion planning, our demonstration generalization pipeline is fast and effective, generating a total of 42.3k demonstrations over 322 training articulated objects.
+                          For policy learning, we propose a novel hierarchical policy representation, in which the high-level policy learns the sub-goal for the end-effector, and the low-level policy learns how to move the end-effector conditioned on the predicted goal.  We demonstrate that this hierarchical approach achieves much better object-level generalization compared to the non-hierarchical version. 
+                          We further propose a novel weighted displacement model for the high-level policy that grounds the prediction into the existing 3D structure of the scene, outperforming alternative policy representations. 
+                          We show that our learned policy can zero-shot transfer to three different real robot settings: a fixed table-top Franka arm across two different labs, and an X-Arm on a mobile base, opening multiple unseen articulated objects across two labs, real lounges, and kitchens.   
+<br>
+<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">ArticuBot System Overview</span></h2>
+                        <!-- <img src="videos/pipeline.m4v" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto; max-width: 80%;" /> -->
+                            <video autoplay controls muted loop playsinline height="100%">
+                              <source src="assets/overview.mp4"
+                                      type="video/mp4">
+                            </video>
+                        <br>
+
+                        <p style="font-size: 125%">
+                          <span style="font-weight: bold">Top</span>: Overview of ArticuBot. We combine sampling-based grasping, motion planning, and opening actions to efficiently generate thousands of demonstrations in simulation. These demonstrations are distilled into a hierarchical policy via imitation learning, and then zero-shot transferred to real world.
+                        <br>
+                        <span style="font-weight: bold">Middle</span>: We propose a weighted displacement model for the high-level policy, which predicts the sub-goal end-effector pose. The weighted displacement model predicts the displacement from each point in the point cloud observation to the sub-goal end-effector, as well as a weight for each point. The final prediction is the weighted average of each point's prediction.  
+                        <br>
+                        <span style="font-weight: bold">Bottom</span>: We propose a goal-conditioned 3D diffusion policy for the low-level policy, which first applies attention between the current end-effector points, the scene points, and the goal end-effector points to obtain a latent embedding, and then performs diffusion on the latent embedding to generate the action, which is the delta transformation of the robot end-effector.
+                        </p>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered ">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">Long-horizon task generation and learning</span></h2>
+                        <img src="assets/images/long-horizon.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto; max-width: 80%;" />
+                        <br>
+                        <span style="font-size: 125%">RoboGen is able to propose high-level tasks, generate corresponding environments, decompose the high-level goal into low-level subtasks, and then learn the sub-skills sequentially.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    
+    <!-- interactive examples of long horizon tasks -->
+    <!-- <section class="section">
+      <div class="container is-max-widescreen">
+          <div class="rows">
+              <div class="rows is-centered ">
+                  <div class="row is-full-width">
+                      <h2 class="title is-3"><span class="dvima">RoboGen generated tasks, scenes, training supervisions, and learned skills</span></h2>
+                      <p style="font-size: 125%">
+                          Please select an image below to view the results.
+                      </p>
+                  </div>
+              </div>
+          </div>
+          <br>
+          <div class="columns" style="align-items: end;">
+              <div class="column is-half">
+                  
+                  <div class="col-md-4 col-sm-4 col-xs-4">
+
+                    <img src="videos/task_store_an_item_into_the_storagefurniture_2023-10-05-00-26-46.png" width="24.5%" style="border-radius: 10px;" alt='<b>store an item into the storagefurniture</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/store_an_item_into_the_storagefurniture.txt' onclick="populateDemo(this, 1);">
+            
+        
+                    
+                    <img src="videos/task_Heat_up_a_bowl_of_soup_in_microwave_2023-10-05-02-51-38.png" width="24.5%" style="border-radius: 10px;" alt='<b>Heat up a bowl of soup in microwave</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Heat_up_a_bowl_of_soup_in_microwave.txt' onclick="populateDemo(this, 1);">
+            
+
+                
+                    <img src="videos/task_Open_Window_Halfway_2023-10-05-00-47-41.png" width="24.5%" style="border-radius: 10px;" alt='<b>Slide Window Halfway</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Slide_Window_Halfway.txt' onclick="populateDemo(this, 1);">
+            
+        
+                    <img src="videos/2023-10-07-18-37-30_a1_run_at_3_-61.125.png" width="24.5%" style="border-radius: 10px;" alt='<b>Gallop</b>, RoboGen Results:
+                    [sep]
+                    assets/robogen_results/locomotion_gallop.txt' onclick="populateDemo(this, 1);">
+                      
+        
+                    
+                    <img src="videos/2023-10-09-03-07-40_atlas_spin_right_-145.235.png" width="24.5%" style="border-radius: 10px;" alt='<b>Rotate in place</b>, RoboGen Results:
+                    [sep]
+                    assets/robogen_results/locomotion_rotate_in_place.txt' onclick="populateDemo(this, 1);">
+
+                    <img src="videos/task_retrieve_an_item_from_safe_2023-10-05-00-31-31.png" width="24.5%" style="border-radius: 10px;" alt='<b>retrieve an item from safe</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/retrieve_an_item_from_safe.txt' onclick="populateDemo(this, 1);">
+            
+        
+                    
+                    <img src="videos/task_Unload_Objects_from_Cart_2023-10-05-22-36-46.png" width="24.5%" style="border-radius: 10px;" alt='<b>Unload Objects from Cart</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Unload_Objects_from_Cart.txt' onclick="populateDemo(this, 1);">
+            
+        
+                      
+                   
+        
+                    <img src="videos/task_Change_Lamp_Direction_2023-10-08-02-54-38.png" width="24.5%" style="border-radius: 10px;" alt='<b>Change Lamp Direction</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Change_Lamp_Direction.txt' onclick="populateDemo(this, 1);">
+            
+        
+                    <img src="videos/task_Retrieve_item_from_box_2023-10-06-02-47-42.png" width="24.5%" style="border-radius: 10px;" alt='<b>Retrieve item from box</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Retrieve_item_from_box.txt' onclick="populateDemo(this, 1);">
+            
+        
+                    <img src="videos/task_store_food_in_refrigerator_2023-10-07-19-42-17.png" width="24.5%" style="border-radius: 10px;" alt='<b>store food in refrigerator</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/store_food_in_refrigerator.txt' onclick="populateDemo(this, 1);">
+
+                    <img src="videos/2023-10-08-18-43-13_anymal_jump_-1041.067.png" width="24.5%" style="border-radius: 10px;" alt='<b>jump up</b>, RoboGen Results:
+                    [sep]
+                    assets/robogen_results/locomotion_jump.txt' onclick="populateDemo(this, 1);">
+            
+                    <img src="videos/task_Extend_Suitcase_Handle_2023-10-05-00-35-37.png" width="24.5%" style="border-radius: 10px;" alt='<b>Extend Suitcase Handle</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Extend_Suitcase_Handle.txt' onclick="populateDemo(this, 1);">
+
+                <img src="videos/task_Pull_Lever_to_Start_Coffee_Brewing_2023-10-09-03-39-55.png" width="24.5%" style="border-radius: 10px;" alt='<b>Pull Lever to Start Coffee Brewing</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Pull_Lever_to_Start_Coffee_Brewing.txt' onclick="populateDemo(this, 1);">
+            
+        
+                    <img src="videos/task_Flush_the_Toilet_2023-10-06-03-20-55.png" width="24.5%" style="border-radius: 10px;" alt='<b>Flush the Toilet</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Flush_the_Toilet.txt' onclick="populateDemo(this, 1);">
+            
+                    <img src="videos/task_Rotate_Laptop_Screen_2023-10-05-00-32-43.png" width="24.5%" style="border-radius: 10px;" alt='<b>Close laptop lid</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Close_Laptop_Lid.txt' onclick="populateDemo(this, 1);">
+            
+        
+                  
+        
+             
+
+                    <img src="videos/2023-10-07-22-04-04_a1_flip_leftward_-2207.387.png" width="24.5%" style="border-radius: 10px;" alt='<b>Flip leftwards</b>, RoboGen Results:
+                    [sep]
+                    assets/robogen_results/locomotion_flip_leftwards.txt' onclick="populateDemo(this, 1);">
+            
+
+                </div>
+
+              </div>
+              <div class="row border rounded" style="padding-top:2px; padding-bottom:12px;">
+                  <div class="col-md-6">
+                      <video id="demo-video-1" style="border-radius: 5px;" autoplay loop muted webkit-playsinline
+                          playsinline onclick="setAttribute('controls', 'true');">
+                          <source id="expandedImg-1" src="videos/select.m4v" type="video/mp4">
+                      </video>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div id="imgtext-1" style="font-size: 1.5em">Select an image above to show the RoboGen results:</div>
+              <div>
+
+                  <pre class="p-1 scrollable"><code class="language-python" id="answer-1">RoboGen response shown within code block.</code></pre>
+
+              </div>
+          </div>
+      </div>
+  </section> -->
+  <!-- interactive examples of long horizon tasks -->
+
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+  
+  
+      <div class="rows is-centered ">
+        <div class="row is-full-width">
+            <h2 class="title is-3"><span class="dvima">Real-World Lab A Test objects</span></h2>
+        </div>
+    </div>
+    <br>
+    <p style="font-size: 125%">
+    We test ArticuBot on 9 unseen real-world articulated objects with a table-top Franka Arm, and two Azure Kinects cameras in Lab A.
+    </p>
+    <br>
+    <br>
+  
+      <div class="columns is-centered is-multiline">
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/3d_layer_drawer_trial_5.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center; width: 100%;">3-layer cabinet</p>
+          </div>
+        </div>
+
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/knob_cabinet_trial_2.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center; width: 100%;">knob cabinet</p>
+          </div>
+        </div>  
+
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/drawer_trial_2.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center; width: 100%;">2-layer drawer</p>
+          </div>
+        </div>  
+
+
+
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/microwave_trial_5.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center; width: 100%;">red microwave</p>
+          </div>
+        </div>  
+
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/white_cabinet_trial_1.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center; width: 100%;">white cabinet</p>
+          </div>
+        </div>  
+
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/new_microwave_trial_3.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center; width: 100%;">black microwave</p>
+          </div>
+        </div>  
+
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/toy_fridge_trial_1.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center; width: 100%;">toy fridge</p>
+          </div>
+        </div>  
+
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/toy_oven_trial_1.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center; width: 100%;">toy oven</p>
+          </div>
+        </div>  
+
+
+
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/knob_drawer_trial_2.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center; width: 100%;">knob drawer</p>
+          </div>
+        </div>  
+        
+      </div>
+    </section>
+
+
+    <section class="section">
+      <div class="container is-max-widescreen">
+    
+    
+        <div class="rows is-centered ">
+          <div class="row is-full-width">
+              <h2 class="title is-3"><span class="dvima">Real World Lab B Test objects</span></h2>
+          </div>
+      </div>
+      <br>
+      <p style="font-size: 125%">
+      We test ArticuBot on 4 unseen real-world articulated objects with a table-top Franka Arm, and two RealSense D435i cameras in Lab B.
+      </p>
+      <br>
+      <br>
+    
+        <div class="columns is-centered is-multiline">
+          <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+            <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+              <video autoplay controls muted loop playsinline style="max-width: 100%;">
+                <source src="./assets/3d_layer_drawer_trial_5.mp4"
+                        type="video/mp4">
+              </video>
+              <p style="text-align:center; width: 100%;">3-layer cabinet</p>
+            </div>
+          </div>
+  
+          <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+            <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+              <video autoplay controls muted loop playsinline style="max-width: 100%;">
+                <source src="./assets/knob_cabinet_trial_2.mp4"
+                        type="video/mp4">
+              </video>
+              <p style="text-align:center; width: 100%;">knob cabinet</p>
+            </div>
+          </div>  
+  
+          <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+            <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+              <video autoplay controls muted loop playsinline style="max-width: 100%;">
+                <source src="./assets/drawer_trial_2.mp4"
+                        type="video/mp4">
+              </video>
+              <p style="text-align:center; width: 100%;">2-layer drawer</p>
+            </div>
+          </div>  
+  
+  
+  
+          <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+            <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+              <video autoplay controls muted loop playsinline style="max-width: 100%;">
+                <source src="./assets/microwave_trial_5.mp4"
+                        type="video/mp4">
+              </video>
+              <p style="text-align:center; width: 100%;">red microwave</p>
+            </div>
+          </div>  
+  
+          <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+            <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+              <video autoplay controls muted loop playsinline style="max-width: 100%;">
+                <source src="./assets/white_cabinet_trial_1.mp4"
+                        type="video/mp4">
+              </video>
+              <p style="text-align:center; width: 100%;">white cabinet</p>
+            </div>
+          </div>  
+  
+          <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+            <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+              <video autoplay controls muted loop playsinline style="max-width: 100%;">
+                <source src="./assets/new_microwave_trial_3.mp4"
+                        type="video/mp4">
+              </video>
+              <p style="text-align:center; width: 100%;">black microwave</p>
+            </div>
+          </div>  
+        </div>
+      </section>
+
+
+      <section class="section">
+        <div class="container is-max-widescreen">
+      
+      
+          <div class="rows is-centered ">
+            <div class="row is-full-width">
+                <h2 class="title is-3"><span class="dvima">Real Lounge/Kitchen/Offices </span></h2>
+            </div>
+        </div>
+        <br>
+        <p style="font-size: 125%">
+        We also test ArticuBot in loungs/kitchen/offices on 7 unseen real-world articulated objects with a X-Arm on a mobile base. We use two RealSense D435i cameras in Lab B.
+        We test with the original X-Arm gripper, and also the UMI gripper.
+        </p>
+        <br>
+        <br>
+      
+          <div class="columns is-centered is-multiline">
+
+    
+              <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+                <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                  <video autoplay controls muted loop playsinline style="max-width: 80%;">
+                    <source src="./assets/nsh_a_drawer_trial_2.mp4"
+                            type="video/mp4">
+                  </video>
+                  <p style="text-align:center; width: 80%;">Drawer</p>
+                </div>
+              </div>
+
+              <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+                <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                  <video autoplay controls muted loop playsinline style="max-width: 80%;">
+                    <source src="./assets/nsh_a_fridge.mp4"
+                            type="video/mp4">
+                  </video>
+                  <p style="text-align:center; width: 80%;">Fridge</p>
+                </div>
+              </div>
+    
+    
+            <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+              <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                <video autoplay controls muted loop playsinline style="max-width: 80%;">
+                  <source src="./assets/nsh_a_cabinet_trial_3.mp4"
+                          type="video/mp4">
+                </video>
+                <p style="text-align:center; width: 80%;">cabinet</p>
+              </div>
+            </div>  
+    
+            <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+              <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                <video autoplay controls muted loop playsinline style="max-width: 80%;">
+                  <source src="./assets/nsh4_cabinet_trial_3.mp4"
+                          type="video/mp4">
+                </video>
+                <p style="text-align:center; width: 80%;">Cabinet wtih thin handle</p>
+              </div>
+            </div>  
+    
+            <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+              <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                <video autoplay controls muted loop playsinline style="max-width: 80%;">
+                  <source src="./assets/robolounge_drawer.mp4"
+                          type="video/mp4">
+                </video>
+                <p style="text-align:center; width: 80%;">Drawer 2</p>
+              </div>
+            </div>
+            
+            <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+              <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                <video autoplay controls muted loop playsinline style="max-width: 80%;">
+                  <source src="./assets/wooden_drawer_trial_1.mp4"
+                          type="video/mp4">
+                </video>
+                <p style="text-align:center; width: 80%;">Drawer 3</p>
+              </div>
+            </div>
+            
+
+            <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+              <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                <video autoplay controls muted loop playsinline style="max-width: 80%;">
+                  <source src="./assets/nsh4_dishwasher_trial_1.mp4"
+                          type="video/mp4">
+                </video>
+                <p style="text-align:center; width: 80%;">Dishwasher (early stop due to excessive force)</p>
+              </div>
+            </div>
+            
+            
+          </div>
+        </section>
+
+
+        <section class="section">
+          <div class="container is-max-widescreen">
+              <div class="rows">
+                  <div class="rows is-centered">
+                      <div class="row is-full-width">
+                          <h2 class="title is-3"><span class="dvima">Comparison to prior methods in the real world</span></h2>
+                          <p style="font-size: 125%">
+                          We compare to FlowBot3D and AO-Grasp on 9 objects in lab A.
+                          As AO-Grasp only performs grasping, we compare against it in terms of grasping success rate.
+                          As FlowBot3D originally uses a suction gripper for grasping, when comparing to FlowBot3D, we manually move the parallel jaw gripper to first grasp the 
+                          handle of the object, then apply FlowBot3D to open it. We compare against it in terms of normalized opening performance.
+                          We also compare to OpenVLA, which we find to fail to grasp or open any of the test objects. 
+                          </p>
+                          <br>
+                          <br>
+
+                          <img src="assets/real-world-results-2-1.png" alt="Example Image" style="max-width: 100%;">
+    <p style="text-align:center; width: 100%;">Comparison to prior articulated object manipulation methods</p>
+                          <br>
+  
+                          </p>
+                          </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+
+      <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">Comparison to non-hierarchical policy</span></h2>
+                        <p style="font-size: 125%">
+                        We compare ArticuBot, which uses a hierarchical policy, to a non-hierarchical policy, that learns to output 
+                        eef end-effector delta transformations without conditioned on a learned predicted eef goal. 
+                        We compare in terms of the normalized opening performance, when trained with different number of objects in simulation. 
+                        As shown, using a hierarchical policy significantly outperforms the non-hierarchical policy.
+                        Increasing the number of training objects do not bring much improvement for the non-hierarchical policy. 
+                        </p>
+                        <br>
+                        <br>
+
+                        <div style="display: flex; justify-content: center;">
+                          <img src="assets/line_plot_hierarchical.png" alt="Example Image" style="max-width: 60%;">
+                      </div>
+  
+                      <!-- Centered Caption -->
+                      <p style="text-align:center; width: 100%;">Comparison of hierarchical and non-hierarchical policy.</p>
+                      <br>
+
+                        </p>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+      <div class="container is-max-widescreen">
+          <div class="rows">
+              <div class="rows is-centered">
+                  <div class="row is-full-width">
+                      <h2 class="title is-3"><span class="dvima">Comparison of different high-level policy architecture</span></h2>
+                      <p style="font-size: 125%">
+                      We compare the weighted displacement model, which is the high-level policy used by ArticuBot, to 
+                      several other methods for predicting the goal eef points: DP3 (wtih the default UNet diffusion),
+                      DP3 (using a transformer for diffusion), and 3D Diffuser Actor (3DDA). 
+                      These baselines directly diffuse the goal eef points, instead of predicting the displacement from the scene points to the goal eef points.
+                      The proposed weighted displacement model outperforms these baselines especially when tested with unseen camera randomizations, 
+                      which is crucial for sim2real transfer.
+                      </p>
+                      <br>
+                      <br>
+
+                      <div style="display: flex; justify-content: center;">
+                        <img src="assets/camera_all_together_3.png" alt="Example Image" style="max-width: 100%;">
+                    </div>
+
+                    <!-- Centered Caption -->
+                    <p style="text-align:center; width: 100%;">Comparison of different high-level policies. Leftmost: Train and test without camera randomizations. Right: Train with camera randomizations, and test with no camera randomization, with camera randomizations from training distribution, and with camera randomizations from an unseen test distribution.</p>
+                    <br>
+
+                      </p>
+                      </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+   
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-widescreen content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@misc{wang2023robogen,
+      title={RoboGen: Towards Unleashing Infinite Data for Automated Robot Learning via Generative Simulation}, 
+      author={Yufei Wang and Zhou Xian and Feng Chen and Tsun-Hsuan Wang and Yian Wang and Katerina Fragkiadaki and Zackory Erickson and David Held and Chuang Gan},
+      year={2023},
+      eprint={2311.01455},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+}
+</code></pre>
+    </div>
+</section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-centered">
+                        <p>
+                            Website template borrowed from <a
+                                href="https://github.com/nerfies/nerfies.github.io">NeRFies</a> and <a
+                                href="https://eureka-research.github.io/">Eureka</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<script>
+
+  timeoutIds = [];
+
+  function populateDemo(imgs, num) {
+      // Get the expanded image
+      var expandImg = document.getElementById("expandedImg-" + num);
+      // Get the image text
+      var imgText = document.getElementById("imgtext-" + num);
+      var answer = document.getElementById("answer-" + num);
+
+      // Use the same src in the expanded image as the image being clicked on from the grid
+      expandImg.src = imgs.src.replace(".png", ".mp4");
+      var video = document.getElementById('demo-video-' + num);
+      // or video = $('.video-selector')[0];
+      video.pause()
+      video.load();
+      video.play();
+      video.removeAttribute('controls');
+
+      console.log(expandImg.src);
+      // Use the value of the alt attribute of the clickable image as text inside the expanded image
+      var qa = imgs.alt.split("[sep]");
+      imgText.innerHTML = qa[0];
+      answer.innerHTML = "";
+
+      // Show the container element (hidden with CSS)
+      expandImg.parentElement.style.display = "block";
+      for (timeoutId of timeoutIds) {
+          clearTimeout(timeoutId);
+      }
+
+      // NOTE (wliang): Modified from original to read from file instead
+      fetch(qa[1])
+          .then(response => response.text())
+          .then(contents => {
+              // Call the processData function and pass the contents as an argument
+              typeWriter(contents, 0, qa[0], num, "imgtext-", "answer-");
+          })
+          .catch(error => console.error('Error reading file:', error));
+  }
+
+  function typeWriter(txt, i, q, num, text1, text2) {
+      var imgText = document.getElementById(text1 + num);
+      var answer = document.getElementById(text2 + num);
+      if (imgText.innerHTML == q) {
+          for (let k = 0; k < 5; k++) {
+              if (i < txt.length) {
+                  if (txt.charAt(i) == "\\") {
+                      answer.innerHTML += "\n";
+                      i += 1;
+                  } else {
+                      answer.innerHTML += txt.charAt(i);
+                  }
+                  i++;
+              }
+          }
+          hljs.highlightAll();
+          timeoutIds.push(setTimeout(typeWriter, 1, txt, i, q, num, text1, text2));
+      }
+  }
+
+</script>
+
+</html>
